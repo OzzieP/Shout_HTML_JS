@@ -14,19 +14,20 @@
 </body>
 </html>
 <script>
-    function sendToAPI(string)
+    function sendToAPI(text)
     {
-        $.ajax({
-            url: "",
-            type: "POST",
-            data: {
-                "string" : string
-            },
-            success: function(responses) {
-                $('#response').html(responses);
-            }
+        console.log(text);
+
+        $.post("https://localhost:44333/Shout/Index", jQuery.param({chaine : text}) , 
+        
+        function (response){
+
+            console.log(response);
+            $("#response").html(response);
+
         })
     }
+    
     $('#btn').click(function() {
         sendToAPI($('#string').val());
     });
